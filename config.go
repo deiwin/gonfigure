@@ -1,12 +1,12 @@
 /*
-Package config helps creating configuration structs.
+Package gonfigure helps creating configuration structs.
 
 The intended usage would be a simple struct that calls Value() on
 a fields initialization. E.g.
 
-	var portProperty   = config.NewEnvProperty("PORT", "8080")
-	// If the $DOMAIN env variable not set the configuration creation will fail with a fatal error
-	var domainProperty = config.NewRequiredEnvProperty("DOMAIN")
+	var portProperty   = gonfigure.NewEnvProperty("PORT", "8080")
+	// If the $DOMAIN env variable is not set the configuration creation will fail with a fatal error
+	var domainProperty = gonfigure.NewRequiredEnvProperty("DOMAIN")
 
 	type Config struct {
 		Port   string
@@ -20,7 +20,7 @@ a fields initialization. E.g.
 		}
 	}
 */
-package config
+package gonfigure
 
 import (
 	"log"
