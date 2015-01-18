@@ -55,22 +55,22 @@ type envProperty struct {
 	fallbackValue   string
 }
 
-func (prop envProperty) Value() (defaultValue string) {
-	defaultValue = os.Getenv(prop.envVariableName)
-	if defaultValue == "" {
-		defaultValue = prop.fallbackValue
+func (prop envProperty) Value() string {
+	val := os.Getenv(prop.envVariableName)
+	if val == "" {
+		val = prop.fallbackValue
 	}
-	return
+	return val
 }
 
 type requiredEnvProperty struct {
 	envVariableName string
 }
 
-func (prop requiredEnvProperty) Value() (defaultValue string) {
-	defaultValue = os.Getenv(prop.envVariableName)
-	if defaultValue == "" {
-		log.Fatalf("Please set the %s environment variable", prop.envVariableName)
+func (prop requiredEnvProperty) Value() string {
+	val := os.Getenv(prop.envVariableName)
+	if val == "" {
+		log.Panicf("Please set the %s environment variable", prop.envVariableName)
 	}
-	return
+	return val
 }
