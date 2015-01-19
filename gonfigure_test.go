@@ -3,8 +3,6 @@ package gonfigure_test
 import (
 	"os"
 
-	// "github.com/deiwin/gonfigure"
-
 	"github.com/deiwin/gonfigure"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

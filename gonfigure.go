@@ -5,7 +5,6 @@ The intended usage would be a simple struct that calls Value() on
 a fields initialization. E.g.
 
 	var portProperty   = gonfigure.NewEnvProperty("PORT", "8080")
-	// If the $DOMAIN env variable is not set the configuration creation will fail with a fatal error
 	var domainProperty = gonfigure.NewRequiredEnvProperty("DOMAIN")
 
 	type Config struct {
@@ -16,6 +15,7 @@ a fields initialization. E.g.
 	func NewConfig() Config {
 		return Config{
 			Port:   portProperty.Value(),
+			// If the $DOMAIN env variable is not set, this call will panic
 			Domain: domainProperty.Value(),
 		}
 	}
